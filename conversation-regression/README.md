@@ -1,26 +1,34 @@
-# Conversational AI Regression Testing
+# Conversation regression tests
 
-A reproducible, privacy-safe test harness for intent routing, entity extraction, ambiguous requests, and fallback behavior. This is an **independent synthetic example**, not a reproduction of any employer's virtual assistant.
+This project checks how a simple employee-support router handles ordinary requests, overlapping topics, and unsupported questions.
 
-## Capabilities
+I kept the router rule-based so that every decision can be inspected. It is a baseline for testing routing behavior, not a replacement for a trained NLU model.
 
-- Deterministic rule-based intent routing with explicit priority and ambiguity handling
-- Extract PTO day counts and support ticket IDs from example utterances
-- Refuse unsupported or unclear queries through a fallback label
-- Execute a version-controlled CSV regression suite
-- Report exact-match intent accuracy, entity accuracy, and failed test cases
+## What it covers
 
-The router is a **rule-based baseline**, not a trained NLU model. It is designed to demonstrate regression testing and routing design. It can later be replaced with a statistical classifier or agent-based router.
+- Four support intents: account access, technical support, leave policy, and payroll
+- Ticket IDs and explicitly mentioned numbers of leave days
+- Clarification when more than one intent matches
+- Fallback when no intent matches
+- A CSV regression suite that prints mismatches and exits with an error if a case fails
 
-## Run
+For example, “Unlock my account please” should route to account access. That phrase originally failed and was added as a regression case after a GitHub Actions run exposed the gap.
+
+## Run it
 
 ```bash
-pip install -r requirements.txt
-python router.py "How many PTO days do I have?"
+python -m pip install -r requirements.txt
+python router.py "Unlock my account please"
 python run_regression.py
-pytest -q
+python -m pytest -q
 ```
 
-## Behavior and limitations
+## Verified checks
 
-A request that simultaneously matches multiple domains returns `clarification`, rather than silently selecting one. Empty or out-of-scope requests return `fallback`. Entities are extracted only from supported formats. The dataset is synthetic and not a production benchmark. Report metrics only after executing the scripts.
+The November 1, 2026 GitHub Actions run passed **13 unit tests** and all **35 authored regression cases** for intent and entity exact matches.
+
+Because the cases were written for this router, a perfect regression result means the implemented behavior matches those expectations. It does not imply perfect classification on unseen language.
+
+## Tradeoffs
+
+The router favors explicit, understandable rules. That makes failures easy to debug, but synonyms, paraphrases, and context across turns remain limited. A future version could compare this baseline with a statistical classifier while keeping the same regression cases.
