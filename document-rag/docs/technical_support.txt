@@ -1,0 +1,7 @@
+# Technical support
+
+For a VPN connection problem, confirm that your internet connection works, restart the VPN client, and retry sign-in. If the issue persists, record the error message and contact IT support.
+
+If your laptop does not start, check the power cable and charging indicator before contacting device support. Do not open or repair company-managed hardware yourself.
+
+For meeting audio issues, check the selected microphone and speaker devices in the meeting application's settings.
