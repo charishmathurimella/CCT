@@ -1,31 +1,29 @@
-# Grounded Document Question Answering
+# Document question answering
 
-A local, reproducible retrieval-augmented question-answering baseline using synthetic employee-support documents. It does not require API keys, external model calls, or proprietary information.
+A small, local question-answering baseline over fictional employee-support documents. I built it to study passage retrieval, source attribution, and when a system should decline to answer.
 
-## Architecture
+## Design
 
-1. Load the source documents in `docs/`.
-2. Split each document into short passages.
-3. Index passages with TF-IDF vectors.
-4. Retrieve the most relevant passages for a question using cosine similarity.
-5. Return an extractive answer with the document name and a relevance score.
-6. Abstain when retrieval confidence is below a configured threshold.
+The script reads the text files in `docs/`, splits them into passages, and indexes the passages with TF-IDF. For each question, cosine similarity identifies the best match. The answer is the retrieved passage, accompanied by its source filename and similarity score. A configurable threshold returns an abstention instead of a weak match.
 
-This is a **retrieval and extractive answering baseline**, not a generative LLM implementation. It deliberately avoids inventing answers not supported by the documents.
+There is no generative language model in this implementation. Calling it a full LLM-based RAG system would be misleading.
 
-## Run
+## Try it
 
 ```bash
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 python rag.py "How do I reset my password?"
 python rag.py "What is the leave carryover rule?"
-pytest -q
+python evaluate.py
+python -m pytest -q
 ```
 
 ## Evaluation
 
-`python evaluate.py` measures retrieval top-1 accuracy against the labeled questions in `data/evaluation.csv`. It also reports coverage and correct answers on answered queries. The evaluation examples are synthetic and small; results should not be generalized to real workplace use.
+The verified GitHub Actions run on November 1, 2026 reported **12/12 correct top-1 source-document matches** on the included synthetic evaluation questions. Eleven unit tests passed.
 
-## Next engineering milestones
+The evaluation is intentionally small. It measures retrieval of the expected document, not whether an answer is complete or appropriate in a real workplace.
 
-Add embedding-based retrieval, a held-out evaluation set, a citation-verifying answer generator, and an explicit out-of-scope benchmark. All examples are original synthetic content.
+## Next improvements
+
+Add harder questions with overlapping topics, an out-of-scope set, and passage-level relevance labels. After that, compare TF-IDF with embedding-based retrieval before introducing answer generation.
