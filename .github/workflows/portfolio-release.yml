@@ -1,0 +1,51 @@
+name: Portfolio release readiness
+
+on:
+  push:
+    paths:
+      - "intent-classifier/**"
+      - "document-rag/**"
+      - "conversation-regression/**"
+      - "scripts/**"
+      - ".github/workflows/portfolio-release.yml"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: |
+            intent-classifier/requirements.txt
+            document-rag/requirements.txt
+            conversation-regression/requirements.txt
+      - name: Install dependencies
+        run: |
+          python -m pip install -r intent-classifier/requirements.txt
+          python -m pip install -r document-rag/requirements.txt
+          python -m pip install -r conversation-regression/requirements.txt
+      - name: Audit publication readiness
+        run: python scripts/publication_audit.py
+      - name: Intent classifier unit tests
+        run: python -m pytest intent-classifier/tests -q
+      - name: Intent classifier validation
+        run: python intent-classifier/validate.py
+      - name: Intent classifier original test
+        run: python intent-classifier/train.py
+      - name: Document QA unit tests
+        run: python -m pytest document-rag/tests -q
+      - name: Document QA evaluation
+        run: python document-rag/evaluate.py
+      - name: Conversation router unit tests
+        run: python -m pytest conversation-regression/tests -q
+      - name: Conversation router regression
+        run: python conversation-regression/run_regression.py
