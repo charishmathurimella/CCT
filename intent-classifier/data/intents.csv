@@ -1,0 +1,41 @@
+text,intent
+I forgot my password,account_access
+Reset my login password,account_access
+My account is locked,account_access
+I cannot sign in,account_access
+Help me unlock my profile,account_access
+My credentials are not working,account_access
+Change my account password,account_access
+Login keeps failing,account_access
+How do I reset my PIN,account_access
+I am locked out of my account,account_access
+VPN is not connecting,technical_support
+My laptop keeps restarting,technical_support
+The application crashes on launch,technical_support
+I cannot connect to WiFi,technical_support
+My monitor is not detected,technical_support
+The software installation failed,technical_support
+My computer is running slowly,technical_support
+Audio is not working in meetings,technical_support
+I need help with a network issue,technical_support
+The printer is offline,technical_support
+How many vacation days do I have,leave_policy
+I want to request time off,leave_policy
+Where can I see my leave balance,leave_policy
+What is the holiday schedule,leave_policy
+How do I apply for sick leave,leave_policy
+Can I carry over unused vacation,leave_policy
+Explain the parental leave policy,leave_policy
+When does my PTO reset,leave_policy
+How can I cancel my leave request,leave_policy
+Where do I submit a vacation request,leave_policy
+Where can I download my payslip,payroll
+My paycheck amount looks incorrect,payroll
+When is the next payday,payroll
+How do I update direct deposit,payroll
+I need a copy of my tax form,payroll
+Where is my salary statement,payroll
+My overtime pay is missing,payroll
+How can I change bank details for payroll,payroll
+What deductions are on my paycheck,payroll
+How do I report a payroll issue,payroll
