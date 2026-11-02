@@ -34,7 +34,7 @@ class Retriever:
             raise ValueError("top_k must be positive")
         query = self.vectorizer.transform([question])
         scores = cosine_similarity(query, self.matrix).ravel()
-        indices = scores.argsort()[::-1][:top_k]
+        indices = sorted(range(len(scores)), key=lambda i: (-scores[i], self.documents[i]["source"], self.documents[i]["text"]))[:top_k]
         return [{**self.documents[i], "score": float(scores[i])} for i in indices]
 
     def answer(self, question, threshold=0.15):
