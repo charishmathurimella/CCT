@@ -1,12 +1,14 @@
 # Intent Classification Baseline
 
-A small, reproducible NLP baseline for routing employee-support questions to the right category. All example utterances are synthetic and unrelated to any employer's internal data.
+A reproducible NLP baseline for routing employee-support questions to four intent categories. The 40 example utterances are synthetic and contain no employer data.
 
-## Approach
+## Method
 
-The classifier uses word and character TF-IDF features with logistic regression. A stratified holdout split provides an initial estimate of generalization. The script reports accuracy, macro F1, a classification report, and a confusion matrix. Predictions below a configurable confidence threshold are sent to a fallback route.
-
-This is a baseline, not a production-ready system. The included dataset is deliberately small; results on it should not be interpreted as real-world performance.
+- Word and character TF-IDF features, combined in a scikit-learn pipeline
+- Class-balanced logistic regression
+- Stratified five-fold out-of-fold evaluation, rather than a single small holdout
+- Confidence-based fallback and explicit handling of empty input
+- Dataset integrity checks and automated tests
 
 ## Run
 
@@ -16,10 +18,16 @@ python -m venv .venv
 # Windows PowerShell: .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 python train.py
-python train.py --text "I cannot connect to the VPN" --threshold 0.65
+python train.py --text "I cannot connect to the VPN" --threshold 0.4
 pytest -q
 ```
 
-## Next improvements
+## Measured baseline
 
-Expand the dataset with consented or synthetic examples, add out-of-scope utterances, tune thresholds against validation data, and evaluate performance on an independently collected test set.
+On the 40 synthetic examples, five-fold out-of-fold accuracy is **0.575** and macro F1 is **0.569** (scikit-learn 1.8.0). The example VPN query routes to `technical_support` at confidence **0.543** when the model is trained on all 40 examples.
+
+These results are not comparable one-to-one with the earlier 10-example holdout because the evaluation protocol changed. They are not production-level results. The confidence threshold is a demonstration setting, not a calibrated decision boundary. See [VALIDATION.md](VALIDATION.md).
+
+## Before deployment
+
+Expand the dataset with diverse examples, create a genuinely untouched test set, evaluate out-of-domain queries, tune fallback thresholds against held-out data, and assess per-intent errors.
