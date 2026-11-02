@@ -11,6 +11,8 @@ This repository contains small, independent projects I use to explore those engi
 ## Projects
 
 ### [Intent classification](intent-classifier/)
+
+![Intent classification overview](assets/intent-pipeline.svg)
 A scikit-learn baseline that combines word and character TF-IDF features with logistic regression. Includes separate training, validation, and test datasets, error analysis, and automated tests.
 
 **Measured on synthetic data:** validation macro F1 0.975 (40 examples); held-out test macro F1 0.948 (40 examples). These are small, curated datasets rather than evidence of production performance.
