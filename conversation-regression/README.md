@@ -4,6 +4,17 @@ This project checks how a simple employee-support router handles ordinary reques
 
 I kept the router rule-based so that every decision can be inspected. It is a baseline for testing routing behavior, not a replacement for a trained NLU model.
 
+![Conversation routing and regression pipeline](../assets/conversation-routing.svg)
+
+## Example requests
+
+| Request | Expected routing |
+|---|---|
+| `Unlock my account please` | `account_access` |
+| `My password and VPN both fail` | `clarification` |
+| `I need 5 days of PTO` | `leave_policy` with `days: 5` |
+| `Tell me a joke` | `fallback` |
+
 ## What it covers
 
 - Four support intents: account access, technical support, leave policy, and payroll
