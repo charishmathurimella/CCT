@@ -1,70 +1,78 @@
-"""Train and evaluate a simple text intent classifier on synthetic examples."""
-
+"""Reproducible intent classifier with cross-validation and fallback handling."""
 import argparse
 import csv
+from collections import Counter
 from pathlib import Path
 
-from sklearn.compose import ColumnTransformer
+import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, f1_score
-from sklearn.model_selection import train_test_split
-from sklearn.pipeline import Pipeline
+from sklearn.model_selection import StratifiedKFold, cross_val_predict
+from sklearn.pipeline import FeatureUnion, Pipeline
 
-DATA_PATH = Path(__file__).parent / "data" / "intents.csv"
+DATA_PATH = Path(__file__).resolve().parent / "data" / "intents.csv"
 
 
 def load_examples(path=DATA_PATH):
     with open(path, newline="", encoding="utf-8") as handle:
         rows = list(csv.DictReader(handle))
-    if not rows or any(not row.get("text") or not row.get("intent") for row in rows):
-        raise ValueError("Dataset must contain nonempty text and intent columns.")
-    return [row["text"] for row in rows], [row["intent"] for row in rows]
+    if not rows or any(not row.get("text", "").strip() or not row.get("intent", "").strip() for row in rows):
+        raise ValueError("Dataset must contain nonempty text and intent columns")
+    texts = [row["text"].strip() for row in rows]
+    labels = [row["intent"].strip() for row in rows]
+    if len(set(text.lower() for text in texts)) != len(texts):
+        raise ValueError("Duplicate utterances detected")
+    if min(Counter(labels).values()) < 5:
+        raise ValueError("At least five examples per intent are required for 5-fold CV")
+    return texts, labels
 
 
 def build_model():
-    from sklearn.pipeline import FeatureUnion
     features = FeatureUnion([
-        ("words", TfidfVectorizer(ngram_range=(1, 2), lowercase=True)),
-        ("characters", TfidfVectorizer(analyzer="char_wb", ngram_range=(3, 5))),
+        ("word", TfidfVectorizer(ngram_range=(1, 2), sublinear_tf=True)),
+        ("char", TfidfVectorizer(analyzer="char_wb", ngram_range=(2, 5), sublinear_tf=True)),
     ])
     return Pipeline([
         ("features", features),
-        ("classifier", LogisticRegression(max_iter=1000, random_state=42)),
+        ("classifier", LogisticRegression(max_iter=2000, class_weight="balanced", random_state=42)),
     ])
 
 
-def predict_with_fallback(model, text, threshold=0.65):
+def predict_with_fallback(model, text, threshold=0.4):
     if not 0 <= threshold <= 1:
-        raise ValueError("Threshold must be between 0 and 1.")
+        raise ValueError("Threshold must be between 0 and 1")
+    if not isinstance(text, str) or not text.strip():
+        return "fallback", 0.0
     probabilities = model.predict_proba([text])[0]
-    index = probabilities.argmax()
+    index = int(np.argmax(probabilities))
     confidence = float(probabilities[index])
-    label = str(model.classes_[index]) if confidence >= threshold else "fallback"
-    return label, confidence
+    return (str(model.classes_[index]) if confidence >= threshold else "fallback"), confidence
+
+
+def evaluate(texts, labels):
+    cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+    predictions = cross_val_predict(build_model(), texts, labels, cv=cv)
+    print("5-fold out-of-fold accuracy:", round(accuracy_score(labels, predictions), 3))
+    print("5-fold out-of-fold macro F1:", round(f1_score(labels, predictions, average="macro"), 3))
+    print(classification_report(labels, predictions, zero_division=0))
+    classes = sorted(set(labels))
+    print("Labels:", classes)
+    print("Confusion matrix:\n", confusion_matrix(labels, predictions, labels=classes))
+    return predictions
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--text", help="Optional utterance to classify after training")
-    parser.add_argument("--threshold", type=float, default=0.65)
+    parser.add_argument("--text", help="Classify an example after fitting on all examples")
+    parser.add_argument("--threshold", type=float, default=0.4)
     args = parser.parse_args()
     if not 0 <= args.threshold <= 1:
         parser.error("--threshold must be between 0 and 1")
-
     texts, labels = load_examples()
-    train_x, test_x, train_y, test_y = train_test_split(
-        texts, labels, test_size=0.25, random_state=42, stratify=labels
-    )
-    model = build_model()
-    model.fit(train_x, train_y)
-    predictions = model.predict(test_x)
-    print(f"Accuracy: {accuracy_score(test_y, predictions):.3f}")
-    print(f"Macro F1: {f1_score(test_y, predictions, average='macro'):.3f}")
-    print(classification_report(test_y, predictions, zero_division=0))
-    print("Labels:", list(model.classes_))
-    print("Confusion matrix:\n", confusion_matrix(test_y, predictions, labels=model.classes_))
-    if args.text:
+    evaluate(texts, labels)
+    if args.text is not None:
+        model = build_model().fit(texts, labels)
         label, confidence = predict_with_fallback(model, args.text, args.threshold)
         print(f"Prediction: {label} (confidence: {confidence:.3f})")
 
