@@ -45,3 +45,25 @@ def test_invalid_threshold(retriever, threshold):
 
 def test_evaluation_score_range():
     assert 0 <= evaluate() <= 1
+
+
+def test_search_is_deterministic(retriever):
+    first = retriever.search("Where is my pay statement?")
+    second = retriever.search("Where is my pay statement?")
+    assert first == second
+
+
+def test_search_returns_requested_number(retriever):
+    results = retriever.search("employee support", top_k=2)
+    assert len(results) == 2
+    assert all(0 <= item["score"] <= 1 for item in results)
+
+
+def test_invalid_top_k(retriever):
+    with pytest.raises(ValueError):
+        retriever.search("password", top_k=0)
+
+
+def test_high_threshold_abstains(retriever):
+    result = retriever.answer("reset password", threshold=1)
+    assert result["source"] is None
