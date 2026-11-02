@@ -1,0 +1,7 @@
+# Leave policy
+
+Employees can review their paid time off balance in the leave management portal. Vacation requests should be submitted through the portal for manager approval.
+
+The example policy permits up to five unused vacation days to carry over into the following calendar year. This is a fictional rule used solely for testing.
+
+For sick leave, notify your manager and record the absence in the leave management portal when you are able to do so.
