@@ -8,6 +8,8 @@ At Bank of America, I worked on Erica for Employees, an internal assistant built
 
 This repository contains small, independent projects I use to explore those engineering problems. They use synthetic examples, not internal employer data or code.
 
+**[Explore the illustrated project showcase](SHOWCASE.md)**
+
 ## Projects
 
 ### [Intent classification](intent-classifier/)
