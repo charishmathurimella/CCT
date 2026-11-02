@@ -2,6 +2,18 @@
 
 This project trains a four-class intent classifier for fictional employee-support requests. The goal is to make model behavior easy to inspect, rather than to maximize a score on a large benchmark.
 
+![Intent classification pipeline](../assets/intent-pipeline.svg)
+
+## Example
+
+| Input | Expected intent |
+|---|---|
+| `My laptop will not start` | `technical_support` |
+| `I forgot my password` | `account_access` |
+| `Where is my paycheck?` | `payroll` |
+
+These are illustrative labels, not a claim that every example was separately tested.
+
 ## How it works
 
 The pipeline combines word and character TF-IDF features and fits a class-balanced logistic regression model. A confidence threshold can route low-confidence predictions to a fallback label.
