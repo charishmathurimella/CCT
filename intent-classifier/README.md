@@ -1,14 +1,26 @@
 # Intent Classification Baseline
 
-A reproducible NLP baseline for routing employee-support questions to four intent categories. The 40 example utterances are synthetic and contain no employer data.
+A reproducible intent classifier for four employee-support categories using **180 synthetic training examples** and **40 separate synthetic test examples**. No employer data is included.
 
-## Method
+## Data
 
-- Word and character TF-IDF features, combined in a scikit-learn pipeline
+| Intent | Train | Test |
+|---|---:|---:|
+| Account access | 45 | 10 |
+| Technical support | 45 | 10 |
+| Leave policy | 45 | 10 |
+| Payroll | 45 | 10 |
+| **Total** | **180** | **40** |
+
+Training utterances are generated from 15 seed sentences per intent, each with three wording variants. This creates considerable linguistic similarity within training groups. The test set uses different sentences, but both sets are synthetic and authored together. It is not an external benchmark.
+
+## Approach
+
+- Word and character TF-IDF features
 - Class-balanced logistic regression
-- Stratified five-fold out-of-fold evaluation, rather than a single small holdout
-- Confidence-based fallback and explicit handling of empty input
-- Dataset integrity checks and automated tests
+- Fit only on the training CSV; report accuracy, macro F1, and a confusion matrix on the separate test CSV
+- Reject exact duplicates across the datasets
+- Confidence-based fallback for individual predictions
 
 ## Run
 
@@ -18,16 +30,10 @@ python -m venv .venv
 # Windows PowerShell: .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 python train.py
-python train.py --text "I cannot connect to the VPN" --threshold 0.4
+python train.py --text "My laptop will not start"
 pytest -q
 ```
 
-## Measured baseline
+## Limitations
 
-On the 40 synthetic examples, five-fold out-of-fold accuracy is **0.575** and macro F1 is **0.569** (scikit-learn 1.8.0). The example VPN query routes to `technical_support` at confidence **0.543** when the model is trained on all 40 examples.
-
-These results are not comparable one-to-one with the earlier 10-example holdout because the evaluation protocol changed. They are not production-level results. The confidence threshold is a demonstration setting, not a calibrated decision boundary. See [VALIDATION.md](VALIDATION.md).
-
-## Before deployment
-
-Expand the dataset with diverse examples, create a genuinely untouched test set, evaluate out-of-domain queries, tune fallback thresholds against held-out data, and assess per-intent errors.
+The test dataset must not be used for repeated model selection or tuning. A separate validation split and an untouched external test set will be needed for defensible performance claims. A target of F1 = 1.00 is not a substitute for genuine generalization. Confidence values are not calibrated.
