@@ -2,6 +2,14 @@
 
 A small, local question-answering baseline over fictional employee-support documents. I built it to study passage retrieval, source attribution, and when a system should decline to answer.
 
+![Document retrieval architecture](../assets/document-retrieval.svg)
+
+## Example
+
+**Question:** `How do I reset my password?`
+
+The retriever ranks passages in the fictional support documents, then returns the best matching passage along with its source filename and similarity score. When no passage meets the threshold, it returns an abstention message instead of making up an answer.
+
 ## Design
 
 The script reads the text files in `docs/`, splits them into passages, and indexes the passages with TF-IDF. For each question, cosine similarity identifies the best match. The answer is the retrieved passage, accompanied by its source filename and similarity score. A configurable threshold returns an abstention instead of a weak match.
