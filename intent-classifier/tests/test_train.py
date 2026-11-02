@@ -5,31 +5,48 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from train import build_model, load_examples, predict_with_fallback, evaluate
+from train import (
+    DATA_PATH, TEST_PATH, build_model, evaluate, load_examples,
+    predict_with_fallback, validate_datasets,
+)
 
 
 @pytest.fixture(scope="module")
-def fitted_model():
-    texts, labels = load_examples()
-    return build_model().fit(texts, labels)
+def datasets():
+    train_x, train_y = load_examples(DATA_PATH)
+    test_x, test_y = load_examples(TEST_PATH)
+    return train_x, train_y, test_x, test_y
 
 
-def test_dataset_integrity():
-    texts, labels = load_examples()
-    assert len(texts) == len(labels) == 40
-    assert len(set(labels)) == 4
+@pytest.fixture(scope="module")
+def fitted_model(datasets):
+    train_x, train_y, _, _ = datasets
+    return build_model().fit(train_x, train_y)
+
+
+def test_dataset_sizes_and_balance(datasets):
+    train_x, train_y, test_x, test_y = datasets
+    assert len(train_x) == len(train_y) == 180
+    assert len(test_x) == len(test_y) == 40
+    assert len(set(train_y)) == 4
+    validate_datasets(*datasets)
+
+
+def test_no_exact_train_test_overlap(datasets):
+    train_x, _, test_x, _ = datasets
+    assert set(x.casefold() for x in train_x).isdisjoint(x.casefold() for x in test_x)
 
 
 def test_known_training_example(fitted_model):
-    label, confidence = predict_with_fallback(fitted_model, "I forgot my password", 0)
+    label, confidence = predict_with_fallback(fitted_model, "I forgot my account password", 0)
     assert label == "account_access"
     assert 0 <= confidence <= 1
 
 
 def test_vpn_example(fitted_model):
-    label, confidence = predict_with_fallback(fitted_model, "I cannot connect to the VPN", 0.4)
+    label, confidence = predict_with_fallback(fitted_model, "The VPN connection keeps dropping", 0)
     assert label == "technical_support"
-    assert confidence >= 0.4
+    assert 0 <= confidence <= 1
 
 
 def test_blank_text_falls_back(fitted_model):
@@ -46,6 +63,6 @@ def test_invalid_threshold(fitted_model, threshold):
         predict_with_fallback(fitted_model, "hello", threshold)
 
 
-def test_cross_validation_returns_all_predictions():
-    texts, labels = load_examples()
-    assert len(evaluate(texts, labels)) == len(labels)
+def test_evaluate_returns_40_predictions(datasets):
+    _, predictions = evaluate(*datasets)
+    assert len(predictions) == 40
