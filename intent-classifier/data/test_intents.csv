@@ -1,0 +1,41 @@
+text,intent
+"My access code fails every time",account_access
+"Can you help restore access to my locked profile",account_access
+"The system refuses my login details",account_access
+"I need to recover access after forgetting my passphrase",account_access
+"Where can I reset two factor verification",account_access
+"Why am I being denied account access",account_access
+"My user ID is no longer recognized",account_access
+"I cannot complete the sign in challenge",account_access
+"How do I regain access to my disabled login",account_access
+"Please help with an expired authentication token",account_access
+"The headset is not producing any audio",technical_support
+"My workstation loses network connectivity",technical_support
+"I get an error whenever I launch the program",technical_support
+"The screen flickers after connecting the dock",technical_support
+"My wireless connection cuts out during calls",technical_support
+"Can someone troubleshoot my unresponsive laptop",technical_support
+"The printer queue is stuck and nothing prints",technical_support
+"My webcam is not appearing in the meeting app",technical_support
+"The computer fails to boot after an update",technical_support
+"Why does the application keep closing unexpectedly",technical_support
+"How much paid time off can I still use",leave_policy
+"I need to schedule a week of vacation",leave_policy
+"Can unused annual leave roll into next year",leave_policy
+"What is the process for requesting medical leave",leave_policy
+"Where is the calendar of company holidays",leave_policy
+"Can I withdraw a pending time off request",leave_policy
+"Who should I contact about parental leave eligibility",leave_policy
+"How do I check my remaining sick days",leave_policy
+"Is unpaid absence allowed under the leave rules",leave_policy
+"I want to change the dates of my vacation",leave_policy
+"My wages were deposited into the wrong account",payroll
+"Can I get an itemized salary slip",payroll
+"How do I correct my paycheck deductions",payroll
+"The amount paid this period seems too low",payroll
+"I need documentation of my annual earnings",payroll
+"Where can I see my tax withholding amounts",payroll
+"What date will this month's wages arrive",payroll
+"How can I update the account used for salary deposits",payroll
+"My overtime hours are not reflected in pay",payroll
+"I have not received my direct deposit",payroll
