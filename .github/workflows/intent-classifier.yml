@@ -1,0 +1,32 @@
+name: NLP intent classifier checks
+
+on:
+  push:
+    paths:
+      - "intent-classifier/**"
+      - ".github/workflows/intent-classifier.yml"
+  pull_request:
+    paths:
+      - "intent-classifier/**"
+      - ".github/workflows/intent-classifier.yml"
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install -r intent-classifier/requirements.txt
+      - name: Unit tests
+        working-directory: intent-classifier
+        run: python -m pytest -q
+      - name: Validation metrics
+        working-directory: intent-classifier
+        run: python validate.py
+      - name: Original test metrics
+        working-directory: intent-classifier
+        run: python train.py
