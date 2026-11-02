@@ -1,0 +1,36 @@
+utterance,expected_intent,expected_entities
+I forgot my password,account_access,{}
+The login screen rejects my credentials,account_access,{}
+I cannot sign in,account_access,{}
+Unlock my account please,account_access,{}
+My authentication code failed,account_access,{}
+The VPN is disconnected,technical_support,{}
+My printer is offline,technical_support,{}
+My laptop will not boot,technical_support,{}
+The webcam is broken,technical_support,{}
+My monitor is flickering,technical_support,{}
+How much PTO do I have,leave_policy,{}
+Can I take 3 days of vacation,leave_policy,"{""days"": 3}"
+I need 2 days of sick leave,leave_policy,"{""days"": 2}"
+What is the annual leave policy,leave_policy,{}
+I want time off,leave_policy,{}
+Where is my paycheck,payroll,{}
+My direct deposit has not arrived,payroll,{}
+Can I download my payslip,payroll,{}
+My salary is incorrect,payroll,{}
+Why are my wages late,payroll,{}
+My password and VPN both fail,clarification,{}
+Can I check PTO and my paycheck,clarification,{}
+The laptop and payroll portal have problems,clarification,{}
+I need vacation and salary information,clarification,{}
+My printer and account login both failed,clarification,{}
+Tell me a joke,fallback,{}
+What is the weather today,fallback,{}
+Hello there,fallback,{}
+I need help,fallback,{}
+,fallback,{}
+Check ticket IT-1234 for my VPN,technical_support,"{""ticket_id"": ""IT-1234""}"
+My printer case ABC12345 is unresolved,technical_support,"{""ticket_id"": ""ABC12345""}"
+I need 5 days of PTO,leave_policy,"{""days"": 5}"
+Please review ticket HR-900 for my vacation,leave_policy,"{""ticket_id"": ""HR-900""}"
+Ticket PAY-12345 concerns my paycheck,payroll,"{""ticket_id"": ""PAY-12345""}"
