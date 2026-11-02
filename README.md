@@ -29,7 +29,8 @@ This GitHub is a place for independent, reproducible projects that explore pract
 ## Projects in development
 
 - [Intent Classification Engine](intent-classifier/): 180 synthetic training utterances, 40 held-out test utterances, validation workflow, and automated checks. Previously measured test macro F1: 0.948 on the synthetic benchmark.
-- [Grounded Document Question Answering](document-rag/): local TF-IDF retrieval, extractive answers with document citations, abstention handling, and an evaluation script. New project, with automated checks configured; performance has not yet been independently verified.
+- [Grounded Document Question Answering](document-rag/): local TF-IDF retrieval, extractive answers with document citations, abstention handling, and an evaluation script. Automated checks are configured; performance has not yet been independently verified.
+- [Conversational AI Regression Testing](conversation-regression/): synthetic intent routing, entity extraction, ambiguity clarification, fallback behavior, and a labeled regression suite. Automated checks are configured; performance has not yet been independently verified.
 
 Both projects are independent portfolio examples, not employer code or production deployments.
 
