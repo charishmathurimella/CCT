@@ -1,39 +1,36 @@
-# Intent Classification Baseline
+# Intent classification
 
-A reproducible intent classifier for four employee-support categories using **180 synthetic training examples** and **40 separate synthetic test examples**. No employer data is included.
+This project trains a four-class intent classifier for fictional employee-support requests. The goal is to make model behavior easy to inspect, rather than to maximize a score on a large benchmark.
 
-## Data
+## How it works
 
-| Intent | Train | Test |
-|---|---:|---:|
-| Account access | 45 | 10 |
-| Technical support | 45 | 10 |
-| Leave policy | 45 | 10 |
-| Payroll | 45 | 10 |
-| **Total** | **180** | **40** |
+The pipeline combines word and character TF-IDF features and fits a class-balanced logistic regression model. A confidence threshold can route low-confidence predictions to a fallback label.
 
-Training utterances are generated from 15 seed sentences per intent, each with three wording variants. This creates considerable linguistic similarity within training groups. The test set uses different sentences, but both sets are synthetic and authored together. It is not an external benchmark.
+The dataset contains 180 training examples, 40 validation examples, and 40 test examples across account access, technical support, leave policy, and payroll. The training examples include repeated phrasing patterns. All data is synthetic.
 
-## Approach
-
-- Word and character TF-IDF features
-- Class-balanced logistic regression
-- Fit only on the training CSV; report accuracy, macro F1, and a confusion matrix on the separate test CSV
-- Reject exact duplicates across the datasets
-- Confidence-based fallback for individual predictions
-
-## Run
+## Run it
 
 ```bash
-python -m venv .venv
-# macOS/Linux: source .venv/bin/activate
-# Windows PowerShell: .venv\Scripts\Activate.ps1
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 python train.py
 python train.py --text "My laptop will not start"
-pytest -q
+python validate.py
+python -m pytest -q
 ```
 
-## Limitations
+## Results
 
-The test dataset must not be used for repeated model selection or tuning. A separate validation split and an untouched external test set will be needed for defensible performance claims. A target of F1 = 1.00 is not a substitute for genuine generalization. Confidence values are not calibrated.
+In the verified GitHub Actions run on November 1, 2026:
+
+| Evaluation | Accuracy | Macro F1 | Examples |
+|---|---:|---:|---:|
+| Validation | 0.975 | 0.975 | 40 |
+| Held-out test | 0.950 | 0.948 | 40 |
+
+Eleven unit tests passed. The test errors were both payroll examples routed to other intents.
+
+## What I'd improve next
+
+The examples are curated and linguistically similar, so these results do not establish real-world generalization. A stronger evaluation would include independently collected queries, more ambiguous requests, confidence calibration, and explicit out-of-domain examples. The test set should not be reused to tune the model.
+
+See [VALIDATION.md](VALIDATION.md) for the test breakdown.
