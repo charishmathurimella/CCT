@@ -1,0 +1,7 @@
+# Account access
+
+If you forgot your password, open the employee identity portal and choose Reset password. Verify your identity with your registered authentication method before choosing a new password.
+
+If your account is locked after repeated failed sign-in attempts, use the Unlock account option in the identity portal. If self-service unlock is unavailable, contact the identity support team.
+
+Never share your password, recovery codes, or one-time authentication codes with another person. Support staff will not request these secrets.
