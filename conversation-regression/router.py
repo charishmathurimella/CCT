@@ -7,7 +7,7 @@ INTENTS = ("account_access", "technical_support", "leave_policy", "payroll")
 
 PATTERNS = {
     "account_access": (
-        r"\b(?:password|passcode|login|log\s?in|sign\s?in|credentials|authentication|unlock account|account locked)\b",
+        r"\b(?:password|passcode|login|log\s?in|sign\s?in|credentials|authentication|unlock(?: my| the)? account|account locked)\b",
     ),
     "technical_support": (
         r"\b(?:vpn|printer|laptop|wifi|wi-fi|webcam|monitor|software|microphone|computer|headset)\b",
