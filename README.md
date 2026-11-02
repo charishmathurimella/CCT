@@ -26,7 +26,12 @@ This GitHub is a place for independent, reproducible projects that explore pract
 3. **Tool-enabled assistants:** Explore structured tool calls, guardrails, and failure handling.
 4. **NLP regression testing:** Develop repeatable checks for intent routing and entity extraction.
 
-These are project directions, not claims of completed or published implementations. As repositories are built, I'll link the code and results here.
+## Projects in development
+
+- [Intent Classification Engine](intent-classifier/): 180 synthetic training utterances, 40 held-out test utterances, validation workflow, and automated checks. Previously measured test macro F1: 0.948 on the synthetic benchmark.
+- [Grounded Document Question Answering](document-rag/): local TF-IDF retrieval, extractive answers with document citations, abstention handling, and an evaluation script. New project, with automated checks configured; performance has not yet been independently verified.
+
+Both projects are independent portfolio examples, not employer code or production deployments.
 
 ## Tools and technologies
 
@@ -36,5 +41,6 @@ Python · SQL · scikit-learn · pandas · spaCy · Transformers · PyTorch · F
 
 - **Email:** [charishmathurimella@gmail.com](mailto:charishmathurimella@gmail.com)
 - **GitHub:** [charishmathurimella](https://github.com/charishmathurimella)
+- **LinkedIn:** [Professional profile](https://www.linkedin.com/in/charishma-chand-t-125229305/)
 
 *All public projects use original or appropriately licensed examples. No confidential employer code, data, or internal configurations are published here.*
