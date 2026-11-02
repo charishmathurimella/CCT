@@ -1,0 +1,32 @@
+name: Document QA checks
+
+on:
+  push:
+    paths:
+      - "document-rag/**"
+      - ".github/workflows/document-rag.yml"
+  pull_request:
+    paths:
+      - "document-rag/**"
+      - ".github/workflows/document-rag.yml"
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install -r document-rag/requirements.txt
+      - name: Unit tests
+        working-directory: document-rag
+        run: python -m pytest -q
+      - name: Retrieval evaluation
+        working-directory: document-rag
+        run: python evaluate.py
+      - name: Example question
+        working-directory: document-rag
+        run: python rag.py "How do I reset my password?"
