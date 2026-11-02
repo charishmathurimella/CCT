@@ -1,25 +1,16 @@
-# Validation: revised baseline
+# Validation protocol
 
-Local run on 2026-11-01 using Python, scikit-learn 1.8.0.
+The current dataset contains **180 synthetic training utterances** (45 per intent) and **40 separate synthetic test utterances** (10 per intent).
 
-- Dataset: 40 synthetic utterances, 10 for each of four intents
-- Evaluation: stratified 5-fold cross-validation with out-of-fold predictions (random_state=42)
-- Accuracy: **0.575**
-- Macro F1: **0.569**
-- VPN example: `technical_support`, confidence **0.543**, threshold **0.4**
+Run:
 
-Confusion matrix, with rows actual and columns predicted:
-
-```text
-labels: account_access, leave_policy, payroll, technical_support
-[[6 1 0 3]
- [1 8 0 1]
- [0 4 4 2]
- [3 1 1 5]]
+```bash
+python train.py
+pytest -q
 ```
 
-## Limitations
+The script trains a TF-IDF and logistic regression pipeline on `data/intents.csv` and reports accuracy, macro F1, a classification report, and a confusion matrix on `data/test_intents.csv`. It checks the expected dataset sizes, per-intent balance, and exact train/test duplicates.
 
-This remains a small synthetic baseline with significant classification errors. Five-fold cross-validation uses more evaluation examples than the original 10-example holdout, but it is not an independent external test. The previous 40% holdout accuracy and the new 57.5% cross-validation accuracy use different evaluation protocols and should not be presented as a direct improvement measurement. The fallback threshold has not been calibrated.
+**Do not interpret the earlier 57.5% cross-validation score as the result for this dataset.** That score was measured on the former 40-example dataset. No new measured performance score is recorded here until the updated code has been executed.
 
-Next steps: add varied labeled examples, reserve a never-seen test set, evaluate out-of-scope requests, and tune threshold based on coverage and error rate.
+The examples are synthetic and relatively templated. This test is useful for a reproducible demonstration, but a more challenging independently authored evaluation set is needed before claiming deployment readiness.
