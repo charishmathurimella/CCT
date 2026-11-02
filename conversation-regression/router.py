@@ -7,16 +7,16 @@ INTENTS = ("account_access", "technical_support", "leave_policy", "payroll")
 
 PATTERNS = {
     "account_access": (
-        r"\\b(?:password|passcode|login|log\\s?in|sign\\s?in|credentials|authentication|unlock account|account locked)\\b",
+        r"\b(?:password|passcode|login|log\s?in|sign\s?in|credentials|authentication|unlock account|account locked)\b",
     ),
     "technical_support": (
-        r"\\b(?:vpn|printer|laptop|wifi|wi-fi|webcam|monitor|software|microphone|computer|headset)\\b",
+        r"\b(?:vpn|printer|laptop|wifi|wi-fi|webcam|monitor|software|microphone|computer|headset)\b",
     ),
     "leave_policy": (
-        r"\\b(?:pto|vacation|time off|sick leave|annual leave|parental leave|holiday|leave balance)\\b",
+        r"\b(?:pto|vacation|time off|sick leave|annual leave|parental leave|holiday|leave balance)\b",
     ),
     "payroll": (
-        r"\\b(?:paycheck|payslip|pay stub|paystub|salary|payroll|direct deposit|wages|overtime|tax withholding)\\b",
+        r"\b(?:paycheck|payslip|pay stub|paystub|salary|payroll|direct deposit|wages|overtime|tax withholding)\b",
     ),
 }
 
@@ -24,10 +24,10 @@ PATTERNS = {
 def extract_entities(text):
     """Return only explicitly supported entities, not inferred facts."""
     entities = {}
-    ticket = re.search(r"\\b(?:ticket|case)\\s*#?\\s*([A-Za-z]{2,5}-?\\d{3,8})\\b", text, re.I)
+    ticket = re.search(r"\b(?:ticket|case)\s*#?\s*([A-Za-z]{2,5}-?\d{3,8})\b", text, re.I)
     if ticket:
         entities["ticket_id"] = ticket.group(1).upper()
-    days = re.search(r"\\b(\\d{1,2})\\s+(?:days?|business days?)\\b", text, re.I)
+    days = re.search(r"\b(\d{1,2})\s+(?:days?|business days?)\b", text, re.I)
     if days:
         entities["days"] = int(days.group(1))
     return entities
