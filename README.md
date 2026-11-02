@@ -31,7 +31,7 @@ A rule-based routing baseline and regression suite covering intent selection, ti
 
 ## Working with the code
 
-Each project has its own README, requirements file, and tests. GitHub Actions runs the checks on changes. The [release checklist](PUBLICATION_CHECKLIST.md) records the verification results and the reviews still needed before making the repository public.
+Each project has its own README, requirements file, and tests. GitHub Actions runs the checks on changes. The [safety checklist](PUBLICATION_CHECKLIST.md) records verified results and outstanding post-publication reviews.
 
 ## Technical interests
 
@@ -43,4 +43,4 @@ Python, SQL, scikit-learn, conversational AI, NLP evaluation, retrieval, regress
 - [GitHub](https://github.com/charishmathurimella)
 - [Email](mailto:charishmathurimella@gmail.com)
 
-**Publication status:** This repository is private while its release review is in progress. No visibility change is authorized without explicit approval.
+**Publication status:** Public. The remaining privacy, ownership, and history checks are documented in the [safety checklist](PUBLICATION_CHECKLIST.md).
