@@ -45,3 +45,7 @@ Python · SQL · scikit-learn · pandas · spaCy · Transformers · PyTorch · F
 - **LinkedIn:** [Professional profile](https://www.linkedin.com/in/charishma-chand-t-125229305/)
 
 *All public projects use original or appropriately licensed examples. No confidential employer code, data, or internal configurations are published here.*
+
+## Publication status
+
+**Private, in preparation.** The projects are not yet independently verified for release. See [publication checklist](PUBLICATION_CHECKLIST.md) for the required CI, security, accuracy, and ownership reviews. Publishing requires explicit approval.
