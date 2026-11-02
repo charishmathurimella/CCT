@@ -1,41 +1,301 @@
 text,intent
-I forgot my password,account_access
-Reset my login password,account_access
-My account is locked,account_access
-I cannot sign in,account_access
-Help me unlock my profile,account_access
-My credentials are not working,account_access
-Change my account password,account_access
-Login keeps failing,account_access
-How do I reset my PIN,account_access
-I am locked out of my account,account_access
-VPN is not connecting,technical_support
-My laptop keeps restarting,technical_support
-The application crashes on launch,technical_support
-I cannot connect to WiFi,technical_support
-My monitor is not detected,technical_support
-The software installation failed,technical_support
-My computer is running slowly,technical_support
-Audio is not working in meetings,technical_support
-I need help with a network issue,technical_support
-The printer is offline,technical_support
-How many vacation days do I have,leave_policy
-I want to request time off,leave_policy
-Where can I see my leave balance,leave_policy
-What is the holiday schedule,leave_policy
-How do I apply for sick leave,leave_policy
-Can I carry over unused vacation,leave_policy
-Explain the parental leave policy,leave_policy
-When does my PTO reset,leave_policy
-How can I cancel my leave request,leave_policy
-Where do I submit a vacation request,leave_policy
-Where can I download my payslip,payroll
-My paycheck amount looks incorrect,payroll
-When is the next payday,payroll
-How do I update direct deposit,payroll
-I need a copy of my tax form,payroll
-Where is my salary statement,payroll
-My overtime pay is missing,payroll
-How can I change bank details for payroll,payroll
-What deductions are on my paycheck,payroll
-How do I report a payroll issue,payroll
+"I forgot my account password",account_access
+"I forgot my account password please",account_access
+"I forgot my account password and need assistance",account_access
+"I forgot my account password can someone help",account_access
+"I forgot my account password what should I do",account_access
+"I cannot sign in to my profile",account_access
+"I cannot sign in to my profile please",account_access
+"I cannot sign in to my profile and need assistance",account_access
+"I cannot sign in to my profile can someone help",account_access
+"I cannot sign in to my profile what should I do",account_access
+"My login is locked",account_access
+"My login is locked please",account_access
+"My login is locked and need assistance",account_access
+"My login is locked can someone help",account_access
+"My login is locked what should I do",account_access
+"I need to reset my PIN",account_access
+"I need to reset my PIN please",account_access
+"I need to reset my PIN and need assistance",account_access
+"I need to reset my PIN can someone help",account_access
+"I need to reset my PIN what should I do",account_access
+"The authentication code is not accepted",account_access
+"The authentication code is not accepted please",account_access
+"The authentication code is not accepted and need assistance",account_access
+"The authentication code is not accepted can someone help",account_access
+"The authentication code is not accepted what should I do",account_access
+"Help me recover my username",account_access
+"Help me recover my username please",account_access
+"Help me recover my username and need assistance",account_access
+"Help me recover my username can someone help",account_access
+"Help me recover my username what should I do",account_access
+"My sign in attempt keeps failing",account_access
+"My sign in attempt keeps failing please",account_access
+"My sign in attempt keeps failing and need assistance",account_access
+"My sign in attempt keeps failing can someone help",account_access
+"My sign in attempt keeps failing what should I do",account_access
+"I am unable to unlock my account",account_access
+"I am unable to unlock my account please",account_access
+"I am unable to unlock my account and need assistance",account_access
+"I am unable to unlock my account can someone help",account_access
+"I am unable to unlock my account what should I do",account_access
+"The login page rejects my credentials",account_access
+"The login page rejects my credentials please",account_access
+"The login page rejects my credentials and need assistance",account_access
+"The login page rejects my credentials can someone help",account_access
+"The login page rejects my credentials what should I do",account_access
+"How can I change my password",account_access
+"How can I change my password please",account_access
+"How can I change my password and need assistance",account_access
+"How can I change my password can someone help",account_access
+"How can I change my password what should I do",account_access
+"I need help with multi factor authentication",account_access
+"I need help with multi factor authentication please",account_access
+"I need help with multi factor authentication and need assistance",account_access
+"I need help with multi factor authentication can someone help",account_access
+"I need help with multi factor authentication what should I do",account_access
+"My verification code expired",account_access
+"My verification code expired please",account_access
+"My verification code expired and need assistance",account_access
+"My verification code expired can someone help",account_access
+"My verification code expired what should I do",account_access
+"My account has been disabled",account_access
+"My account has been disabled please",account_access
+"My account has been disabled and need assistance",account_access
+"My account has been disabled can someone help",account_access
+"My account has been disabled what should I do",account_access
+"I cannot access my user profile",account_access
+"I cannot access my user profile please",account_access
+"I cannot access my user profile and need assistance",account_access
+"I cannot access my user profile can someone help",account_access
+"I cannot access my user profile what should I do",account_access
+"I want to update my security questions",account_access
+"I want to update my security questions please",account_access
+"I want to update my security questions and need assistance",account_access
+"I want to update my security questions can someone help",account_access
+"I want to update my security questions what should I do",account_access
+"The VPN connection keeps dropping",technical_support
+"The VPN connection keeps dropping please",technical_support
+"The VPN connection keeps dropping and need assistance",technical_support
+"The VPN connection keeps dropping can someone help",technical_support
+"The VPN connection keeps dropping what should I do",technical_support
+"My laptop will not start",technical_support
+"My laptop will not start please",technical_support
+"My laptop will not start and need assistance",technical_support
+"My laptop will not start can someone help",technical_support
+"My laptop will not start what should I do",technical_support
+"The application freezes during startup",technical_support
+"The application freezes during startup please",technical_support
+"The application freezes during startup and need assistance",technical_support
+"The application freezes during startup can someone help",technical_support
+"The application freezes during startup what should I do",technical_support
+"My WiFi connection is unstable",technical_support
+"My WiFi connection is unstable please",technical_support
+"My WiFi connection is unstable and need assistance",technical_support
+"My WiFi connection is unstable can someone help",technical_support
+"My WiFi connection is unstable what should I do",technical_support
+"My monitor shows a blank screen",technical_support
+"My monitor shows a blank screen please",technical_support
+"My monitor shows a blank screen and need assistance",technical_support
+"My monitor shows a blank screen can someone help",technical_support
+"My monitor shows a blank screen what should I do",technical_support
+"The printer is not responding",technical_support
+"The printer is not responding please",technical_support
+"The printer is not responding and need assistance",technical_support
+"The printer is not responding can someone help",technical_support
+"The printer is not responding what should I do",technical_support
+"The microphone is not detected",technical_support
+"The microphone is not detected please",technical_support
+"The microphone is not detected and need assistance",technical_support
+"The microphone is not detected can someone help",technical_support
+"The microphone is not detected what should I do",technical_support
+"My software installation failed",technical_support
+"My software installation failed please",technical_support
+"My software installation failed and need assistance",technical_support
+"My software installation failed can someone help",technical_support
+"My software installation failed what should I do",technical_support
+"The computer is running slowly",technical_support
+"The computer is running slowly please",technical_support
+"The computer is running slowly and need assistance",technical_support
+"The computer is running slowly can someone help",technical_support
+"The computer is running slowly what should I do",technical_support
+"I cannot connect to the office network",technical_support
+"I cannot connect to the office network please",technical_support
+"I cannot connect to the office network and need assistance",technical_support
+"I cannot connect to the office network can someone help",technical_support
+"I cannot connect to the office network what should I do",technical_support
+"The keyboard stopped working",technical_support
+"The keyboard stopped working please",technical_support
+"The keyboard stopped working and need assistance",technical_support
+"The keyboard stopped working can someone help",technical_support
+"The keyboard stopped working what should I do",technical_support
+"The browser crashes repeatedly",technical_support
+"The browser crashes repeatedly please",technical_support
+"The browser crashes repeatedly and need assistance",technical_support
+"The browser crashes repeatedly can someone help",technical_support
+"The browser crashes repeatedly what should I do",technical_support
+"The video call has no sound",technical_support
+"The video call has no sound please",technical_support
+"The video call has no sound and need assistance",technical_support
+"The video call has no sound can someone help",technical_support
+"The video call has no sound what should I do",technical_support
+"The docking station is not recognized",technical_support
+"The docking station is not recognized please",technical_support
+"The docking station is not recognized and need assistance",technical_support
+"The docking station is not recognized can someone help",technical_support
+"The docking station is not recognized what should I do",technical_support
+"I need help troubleshooting a system error",technical_support
+"I need help troubleshooting a system error please",technical_support
+"I need help troubleshooting a system error and need assistance",technical_support
+"I need help troubleshooting a system error can someone help",technical_support
+"I need help troubleshooting a system error what should I do",technical_support
+"How many vacation days remain",leave_policy
+"How many vacation days remain please",leave_policy
+"How many vacation days remain and need assistance",leave_policy
+"How many vacation days remain can someone help",leave_policy
+"How many vacation days remain what should I do",leave_policy
+"I want to request annual leave",leave_policy
+"I want to request annual leave please",leave_policy
+"I want to request annual leave and need assistance",leave_policy
+"I want to request annual leave can someone help",leave_policy
+"I want to request annual leave what should I do",leave_policy
+"Where do I check my PTO balance",leave_policy
+"Where do I check my PTO balance please",leave_policy
+"Where do I check my PTO balance and need assistance",leave_policy
+"Where do I check my PTO balance can someone help",leave_policy
+"Where do I check my PTO balance what should I do",leave_policy
+"What is the sick leave policy",leave_policy
+"What is the sick leave policy please",leave_policy
+"What is the sick leave policy and need assistance",leave_policy
+"What is the sick leave policy can someone help",leave_policy
+"What is the sick leave policy what should I do",leave_policy
+"How can I cancel approved time off",leave_policy
+"How can I cancel approved time off please",leave_policy
+"How can I cancel approved time off and need assistance",leave_policy
+"How can I cancel approved time off can someone help",leave_policy
+"How can I cancel approved time off what should I do",leave_policy
+"When does my leave balance renew",leave_policy
+"When does my leave balance renew please",leave_policy
+"When does my leave balance renew and need assistance",leave_policy
+"When does my leave balance renew can someone help",leave_policy
+"When does my leave balance renew what should I do",leave_policy
+"Can I carry over vacation days",leave_policy
+"Can I carry over vacation days please",leave_policy
+"Can I carry over vacation days and need assistance",leave_policy
+"Can I carry over vacation days can someone help",leave_policy
+"Can I carry over vacation days what should I do",leave_policy
+"How do I submit a parental leave request",leave_policy
+"How do I submit a parental leave request please",leave_policy
+"How do I submit a parental leave request and need assistance",leave_policy
+"How do I submit a parental leave request can someone help",leave_policy
+"How do I submit a parental leave request what should I do",leave_policy
+"Which holidays are observed",leave_policy
+"Which holidays are observed please",leave_policy
+"Which holidays are observed and need assistance",leave_policy
+"Which holidays are observed can someone help",leave_policy
+"Which holidays are observed what should I do",leave_policy
+"I need to extend my leave",leave_policy
+"I need to extend my leave please",leave_policy
+"I need to extend my leave and need assistance",leave_policy
+"I need to extend my leave can someone help",leave_policy
+"I need to extend my leave what should I do",leave_policy
+"How can I edit a vacation request",leave_policy
+"How can I edit a vacation request please",leave_policy
+"How can I edit a vacation request and need assistance",leave_policy
+"How can I edit a vacation request can someone help",leave_policy
+"How can I edit a vacation request what should I do",leave_policy
+"Where do I see my leave history",leave_policy
+"Where do I see my leave history please",leave_policy
+"Where do I see my leave history and need assistance",leave_policy
+"Where do I see my leave history can someone help",leave_policy
+"Where do I see my leave history what should I do",leave_policy
+"What are the rules for unpaid leave",leave_policy
+"What are the rules for unpaid leave please",leave_policy
+"What are the rules for unpaid leave and need assistance",leave_policy
+"What are the rules for unpaid leave can someone help",leave_policy
+"What are the rules for unpaid leave what should I do",leave_policy
+"Who approves my time off request",leave_policy
+"Who approves my time off request please",leave_policy
+"Who approves my time off request and need assistance",leave_policy
+"Who approves my time off request can someone help",leave_policy
+"Who approves my time off request what should I do",leave_policy
+"How do I report a sick day",leave_policy
+"How do I report a sick day please",leave_policy
+"How do I report a sick day and need assistance",leave_policy
+"How do I report a sick day can someone help",leave_policy
+"How do I report a sick day what should I do",leave_policy
+"Where can I download my pay statement",payroll
+"Where can I download my pay statement please",payroll
+"Where can I download my pay statement and need assistance",payroll
+"Where can I download my pay statement can someone help",payroll
+"Where can I download my pay statement what should I do",payroll
+"My paycheck amount is incorrect",payroll
+"My paycheck amount is incorrect please",payroll
+"My paycheck amount is incorrect and need assistance",payroll
+"My paycheck amount is incorrect can someone help",payroll
+"My paycheck amount is incorrect what should I do",payroll
+"When is the next salary payment",payroll
+"When is the next salary payment please",payroll
+"When is the next salary payment and need assistance",payroll
+"When is the next salary payment can someone help",payroll
+"When is the next salary payment what should I do",payroll
+"How do I update direct deposit details",payroll
+"How do I update direct deposit details please",payroll
+"How do I update direct deposit details and need assistance",payroll
+"How do I update direct deposit details can someone help",payroll
+"How do I update direct deposit details what should I do",payroll
+"I need a copy of my tax form",payroll
+"I need a copy of my tax form please",payroll
+"I need a copy of my tax form and need assistance",payroll
+"I need a copy of my tax form can someone help",payroll
+"I need a copy of my tax form what should I do",payroll
+"Why is overtime missing from my pay",payroll
+"Why is overtime missing from my pay please",payroll
+"Why is overtime missing from my pay and need assistance",payroll
+"Why is overtime missing from my pay can someone help",payroll
+"Why is overtime missing from my pay what should I do",payroll
+"What deductions are listed on my payslip",payroll
+"What deductions are listed on my payslip please",payroll
+"What deductions are listed on my payslip and need assistance",payroll
+"What deductions are listed on my payslip can someone help",payroll
+"What deductions are listed on my payslip what should I do",payroll
+"How can I change my payroll bank account",payroll
+"How can I change my payroll bank account please",payroll
+"How can I change my payroll bank account and need assistance",payroll
+"How can I change my payroll bank account can someone help",payroll
+"How can I change my payroll bank account what should I do",payroll
+"I have a question about my bonus payment",payroll
+"I have a question about my bonus payment please",payroll
+"I have a question about my bonus payment and need assistance",payroll
+"I have a question about my bonus payment can someone help",payroll
+"I have a question about my bonus payment what should I do",payroll
+"Where can I find previous payslips",payroll
+"Where can I find previous payslips please",payroll
+"Where can I find previous payslips and need assistance",payroll
+"Where can I find previous payslips can someone help",payroll
+"Where can I find previous payslips what should I do",payroll
+"My salary deposit has not arrived",payroll
+"My salary deposit has not arrived please",payroll
+"My salary deposit has not arrived and need assistance",payroll
+"My salary deposit has not arrived can someone help",payroll
+"My salary deposit has not arrived what should I do",payroll
+"How is my withholding calculated",payroll
+"How is my withholding calculated please",payroll
+"How is my withholding calculated and need assistance",payroll
+"How is my withholding calculated can someone help",payroll
+"How is my withholding calculated what should I do",payroll
+"I want to report a payroll discrepancy",payroll
+"I want to report a payroll discrepancy please",payroll
+"I want to report a payroll discrepancy and need assistance",payroll
+"I want to report a payroll discrepancy can someone help",payroll
+"I want to report a payroll discrepancy what should I do",payroll
+"How do I obtain an earnings statement",payroll
+"How do I obtain an earnings statement please",payroll
+"How do I obtain an earnings statement and need assistance",payroll
+"How do I obtain an earnings statement can someone help",payroll
+"How do I obtain an earnings statement what should I do",payroll
+"My reimbursement is missing from payroll",payroll
+"My reimbursement is missing from payroll please",payroll
+"My reimbursement is missing from payroll and need assistance",payroll
+"My reimbursement is missing from payroll can someone help",payroll
+"My reimbursement is missing from payroll what should I do",payroll
