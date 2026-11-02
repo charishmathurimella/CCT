@@ -5,33 +5,47 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from train import build_model, load_examples, predict_with_fallback
+from train import build_model, load_examples, predict_with_fallback, evaluate
 
 
-def test_dataset_has_multiple_examples_per_class():
+@pytest.fixture(scope="module")
+def fitted_model():
     texts, labels = load_examples()
-    assert len(texts) == len(labels)
-    assert len(set(labels)) >= 3
-    assert all(labels.count(label) >= 4 for label in set(labels))
+    return build_model().fit(texts, labels)
 
 
-def test_model_predicts_known_training_example():
+def test_dataset_integrity():
     texts, labels = load_examples()
-    model = build_model().fit(texts, labels)
-    predicted, confidence = predict_with_fallback(model, "I forgot my password", 0)
-    assert predicted in set(labels)
+    assert len(texts) == len(labels) == 40
+    assert len(set(labels)) == 4
+
+
+def test_known_training_example(fitted_model):
+    label, confidence = predict_with_fallback(fitted_model, "I forgot my password", 0)
+    assert label == "account_access"
     assert 0 <= confidence <= 1
 
 
-def test_threshold_one_returns_fallback():
-    texts, labels = load_examples()
-    model = build_model().fit(texts, labels)
-    predicted, _ = predict_with_fallback(model, "unrelated words", 1)
-    assert predicted == "fallback"
+def test_vpn_example(fitted_model):
+    label, confidence = predict_with_fallback(fitted_model, "I cannot connect to the VPN", 0.4)
+    assert label == "technical_support"
+    assert confidence >= 0.4
 
 
-def test_invalid_threshold():
-    texts, labels = load_examples()
-    model = build_model().fit(texts, labels)
+def test_blank_text_falls_back(fitted_model):
+    assert predict_with_fallback(fitted_model, "  ") == ("fallback", 0.0)
+
+
+def test_threshold_one_returns_fallback(fitted_model):
+    assert predict_with_fallback(fitted_model, "unrelated words", 1)[0] == "fallback"
+
+
+@pytest.mark.parametrize("threshold", [-0.1, 1.1])
+def test_invalid_threshold(fitted_model, threshold):
     with pytest.raises(ValueError):
-        predict_with_fallback(model, "hello", -0.1)
+        predict_with_fallback(fitted_model, "hello", threshold)
+
+
+def test_cross_validation_returns_all_predictions():
+    texts, labels = load_examples()
+    assert len(evaluate(texts, labels)) == len(labels)
