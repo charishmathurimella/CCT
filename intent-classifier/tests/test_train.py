@@ -66,3 +66,26 @@ def test_invalid_threshold(fitted_model, threshold):
 def test_evaluate_returns_40_predictions(datasets):
     _, predictions = evaluate(*datasets)
     assert len(predictions) == 40
+
+
+def test_validation_dataset_is_separate_and_balanced(datasets):
+    from collections import Counter
+    from train import ROOT
+    validation_x, validation_y = load_examples(ROOT / "data" / "validation_intents.csv")
+    train_x, _, test_x, _ = datasets
+    assert len(validation_x) == 40
+    assert Counter(validation_y) == {
+        "account_access": 10,
+        "technical_support": 10,
+        "leave_policy": 10,
+        "payroll": 10,
+    }
+    assert set(x.casefold() for x in validation_x).isdisjoint(x.casefold() for x in train_x)
+    assert set(x.casefold() for x in validation_x).isdisjoint(x.casefold() for x in test_x)
+
+
+def test_validation_metrics_are_bounded():
+    from validate import run_validation
+    accuracy, macro_f1 = run_validation()
+    assert 0 <= accuracy <= 1
+    assert 0 <= macro_f1 <= 1
