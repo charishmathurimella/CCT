@@ -1,51 +1,42 @@
 # Charishma Chand Thurimella
 
-**Senior NLP Data Scientist | Conversational AI & AI Engineering**
+**NLP Data Scientist | Conversational AI | Python**
 
-I build and evaluate language-driven systems, from intent classification and entity extraction to retrieval-augmented assistants and tool-enabled workflows. My work focuses on making NLP systems reliable: understanding where models fail, improving training and validation data, and testing behavior before release.
+I work on conversational systems and the testing that makes them dependable. My interests include intent classification, entity extraction, routing across support domains, and evaluating how language models behave when users ask unexpected questions.
 
-## Areas of focus
+At Bank of America, I worked on Erica for Employees, an internal assistant built with SoundHound Amelia AI. My responsibilities included preparing intent and entity data, investigating routing and classification errors, and validating changes across employee-support workflows.
 
-- **Conversational AI:** Intent and entity modeling, dialogue routing, ambiguity resolution, and voice/chat testing
-- **NLP and machine learning:** Text classification, model evaluation, error analysis, and dataset quality
-- **LLM applications:** Retrieval-augmented generation (RAG), embeddings, prompt and response evaluation, and agent workflows
-- **Engineering:** Python, SQL, APIs, automated testing, and reproducible experiments
+This repository contains small, independent projects I use to explore those engineering problems. They use synthetic examples, not internal employer data or code.
 
-## Professional background
+## Projects
 
-At Bank of America, I worked on *Erica for Employees*, an internal virtual assistant built on SoundHound Amelia AI. My work included intent and entity datasets, language model tuning, regression testing, and cross-domain routing for employee support workflows. I collaborated with engineering and business teams to investigate misclassifications and validate releases.
+### [Intent classification](intent-classifier/)
+A scikit-learn baseline that combines word and character TF-IDF features with logistic regression. Includes separate training, validation, and test datasets, error analysis, and automated tests.
 
-My broader experience spans NLP, data analysis, and software engineering.
+**Measured on synthetic data:** validation macro F1 0.975 (40 examples); held-out test macro F1 0.948 (40 examples). These are small, curated datasets rather than evidence of production performance.
 
-## What I'm building here
+### [Document question answering](document-rag/)
+A local passage-retrieval and extractive answering system. It ranks passages using TF-IDF and cosine similarity, returns source filenames, and abstains when the match is weak.
 
-This GitHub is a place for independent, reproducible projects that explore practical NLP and AI engineering:
+**Measured on synthetic data:** 12/12 top-1 document matches. This is not a generative LLM or a full RAG application.
 
-1. **Intent classification and evaluation:** Compare baseline and transformer approaches, inspect errors, and document tradeoffs.
-2. **Document question answering:** Build a retrieval pipeline with source attribution and measurable retrieval quality.
-3. **Tool-enabled assistants:** Explore structured tool calls, guardrails, and failure handling.
-4. **NLP regression testing:** Develop repeatable checks for intent routing and entity extraction.
+### [Conversation regression tests](conversation-regression/)
+A rule-based routing baseline and regression suite covering intent selection, ticket IDs, leave-day extraction, ambiguous requests, and fallback behavior.
 
-## Projects in development
+**Measured on authored cases:** 35/35 intent matches and 35/35 entity exact matches. These cases check expected behavior; they are not an independent generalization benchmark.
 
-- [Intent Classification Engine](intent-classifier/): 180 synthetic training utterances, 40 held-out test utterances, validation workflow, and automated checks. Previously measured test macro F1: 0.948 on the synthetic benchmark.
-- [Grounded Document Question Answering](document-rag/): local TF-IDF retrieval, extractive answers with document citations, abstention handling, and an evaluation script. Automated checks are configured; performance has not yet been independently verified.
-- [Conversational AI Regression Testing](conversation-regression/): synthetic intent routing, entity extraction, ambiguity clarification, fallback behavior, and a labeled regression suite. Automated checks are configured; performance has not yet been independently verified.
+## Working with the code
 
-Both projects are independent portfolio examples, not employer code or production deployments.
+Each project has its own README, requirements file, and tests. GitHub Actions runs the checks on changes. The [release checklist](PUBLICATION_CHECKLIST.md) records the verification results and the reviews still needed before making the repository public.
 
-## Tools and technologies
+## Technical interests
 
-Python · SQL · scikit-learn · pandas · spaCy · Transformers · PyTorch · FastAPI · LangChain · LangGraph · RAG · SoundHound Amelia AI · Amazon Lex · Dialogflow CX
+Python, SQL, scikit-learn, conversational AI, NLP evaluation, retrieval, regression testing, and LLM application design.
 
-## Get in touch
+## Contact
 
-- **Email:** [charishmathurimella@gmail.com](mailto:charishmathurimella@gmail.com)
-- **GitHub:** [charishmathurimella](https://github.com/charishmathurimella)
-- **LinkedIn:** [Professional profile](https://www.linkedin.com/in/charishma-chand-t-125229305/)
+- [LinkedIn](https://www.linkedin.com/in/charishma-chand-t-125229305/)
+- [GitHub](https://github.com/charishmathurimella)
+- [Email](mailto:charishmathurimella@gmail.com)
 
-*All public projects use original or appropriately licensed examples. No confidential employer code, data, or internal configurations are published here.*
-
-## Publication status
-
-**Private, in preparation.** The projects are not yet independently verified for release. See [publication checklist](PUBLICATION_CHECKLIST.md) for the required CI, security, accuracy, and ownership reviews. Publishing requires explicit approval.
+**Publication status:** This repository is private while its release review is in progress. No visibility change is authorized without explicit approval.
