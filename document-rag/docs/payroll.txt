@@ -1,0 +1,7 @@
+# Payroll
+
+Pay statements can be downloaded from the payroll portal under Pay history. Statements include earnings, deductions, and net pay.
+
+To change your direct deposit bank account, open the payroll portal and select Payment settings. Verify the account details carefully before submitting changes.
+
+If overtime is missing from your paycheck, compare the approved timesheet with your pay statement and contact the payroll support team with the relevant pay period.
