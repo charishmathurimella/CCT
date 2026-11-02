@@ -9,8 +9,8 @@
 - [x] Automated tests and evaluation scripts included for each project
 - [x] Consolidated GitHub Actions workflow added at `.github/workflows/portfolio-release.yml`
 - [x] Lightweight credential and required-file audit script added
-- [ ] Confirm the latest consolidated GitHub Actions run completed successfully
-- [ ] Capture measured validation, retrieval, and regression scores from the run logs
+- [x] Confirm the latest consolidated GitHub Actions run completed successfully (run 41370059339)
+- [x] Capture measured validation, retrieval, and regression scores from the run logs
 - [ ] Review the **entire git history**, not just current files, for confidential code, credentials, internal screenshots, names, URLs, and documents
 - [ ] Manually verify the content is original and approved for sharing
 - [ ] Choose and add a license, if open-source reuse is desired
@@ -47,3 +47,12 @@ python conversation-regression/run_regression.py
 ## Owner approval
 
 When all checks above are complete, request an explicit go-ahead to make the repository public. Publishing is a separate action, not implied by preparing it.
+
+## Verified CI results (2026-11-01, run 41370059339)
+
+- Publication audit: passed (pattern-based scan only)
+- Intent classifier: 11 tests passed; validation accuracy 0.975 and macro F1 0.975 (40 synthetic examples); held-out test accuracy 0.950 and macro F1 0.948 (40 synthetic examples)
+- Document QA: 11 tests passed; top-1 source retrieval 12/12 on synthetic evaluation questions
+- Conversational regression: 13 tests passed; intent 35/35 and entity exact-match 35/35 on authored synthetic cases
+
+These are small, synthetic, curated benchmarks and are not production performance claims. The manual history, IP, contact-details, and licensing review remains open.
