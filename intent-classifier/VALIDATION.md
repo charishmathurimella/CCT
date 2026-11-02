@@ -1,53 +1,36 @@
-# Validation results: 180 training / 40 test
+# Intent classifier evaluation
 
-Run on 2026-11-01 using Python, scikit-learn 1.8.0, and pytest 9.0.2.
+The most recent verified results come from the successful [portfolio GitHub Actions run](https://github.com/charishmathurimella/CCT/actions/runs/41370059339) on November 1, 2026.
 
-## Dataset and method
+## Dataset
 
-- Training: **180** synthetic examples, 45 per intent
-- Testing: **40** separate synthetic examples, 10 per intent
-- Model: combined word/character TF-IDF and class-balanced logistic regression
-- The model was fitted on the training set only. No test labels were used for fitting.
-- Dataset checks confirmed no exact text duplicates across the two sets.
+- Training: 180 synthetic utterances, 45 per intent
+- Validation: 40 synthetic utterances, 10 per intent
+- Test: 40 synthetic utterances, 10 per intent
+- Labels: `account_access`, `technical_support`, `leave_policy`, `payroll`
 
-## Measured results
+The model uses word and character TF-IDF features with class-balanced logistic regression. The training set contains repeated sentence structures, so the number of rows should not be mistaken for the number of independent language patterns.
 
-- Independent test accuracy: **0.950** (38/40 correct)
-- Independent test macro F1: **0.948**
-- Automated tests: **9 passed**
+## Results
 
-| Intent | Precision | Recall | F1 | Test examples |
-|---|---:|---:|---:|---:|
-| account_access | 0.91 | 1.00 | 0.95 | 10 |
-| leave_policy | 1.00 | 1.00 | 1.00 | 10 |
-| payroll | 1.00 | 0.80 | 0.89 | 10 |
-| technical_support | 0.91 | 1.00 | 0.95 | 10 |
+| Split | Accuracy | Macro F1 |
+|---|---:|---:|
+| Validation | 0.975 | 0.975 |
+| Test | 0.950 (38/40) | 0.948 |
 
-Confusion matrix, rows actual and columns predicted:
+Eleven unit tests passed in the same CI run.
 
-```text
-labels: account_access, leave_policy, payroll, technical_support
-[[10  0  0  0]
- [ 0 10  0  0]
- [ 1  0  8  1]
- [ 0  0  0 10]]
-```
-
-Incorrect predictions:
-
-- "My wages were deposited into the wrong account": expected payroll, predicted account_access
-- "What date will this month's wages arrive": expected payroll, predicted technical_support
-
-Sample training utterance: "My laptop will not start" -> technical_support, confidence 0.843, using the default threshold 0.4.
+The two test errors involved payroll requests being classified as account access or technical support. They are useful examples of why shared terms such as “account” and payment-related wording need careful coverage.
 
 ## Reproduce
 
 ```bash
-pip install -r requirements.txt
-python train.py --text "My laptop will not start"
-pytest -q
+python -m pip install -r requirements.txt
+python validate.py
+python train.py
+python -m pytest -q
 ```
 
-## Limitations and next steps
+## Interpretation
 
-All utterances are synthetic. Training sentences include near-duplicate suffix variations, so the 180 rows are not 180 independent language patterns. The test sentences were separately written, but the set is small and was authored for the same task. Avoid tuning repeatedly against this test set; create a separate validation set for improvements, then evaluate once on a newly collected untouched test set. Add ambiguous, out-of-scope, and realistic examples, and calibrate the fallback threshold. A macro F1 of 1.0 cannot be promised on genuinely unseen data.
+These are small, synthetic datasets. The test set should remain untouched during further tuning. For a stronger performance claim, collect a new independent test set, add ambiguous and out-of-domain queries, and assess confidence calibration.
