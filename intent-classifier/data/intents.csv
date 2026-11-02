@@ -44,36 +44,6 @@ text,intent
 "The login page rejects my credentials and need assistance",account_access
 "The login page rejects my credentials can someone help",account_access
 "The login page rejects my credentials what should I do",account_access
-"How can I change my password",account_access
-"How can I change my password please",account_access
-"How can I change my password and need assistance",account_access
-"How can I change my password can someone help",account_access
-"How can I change my password what should I do",account_access
-"I need help with multi factor authentication",account_access
-"I need help with multi factor authentication please",account_access
-"I need help with multi factor authentication and need assistance",account_access
-"I need help with multi factor authentication can someone help",account_access
-"I need help with multi factor authentication what should I do",account_access
-"My verification code expired",account_access
-"My verification code expired please",account_access
-"My verification code expired and need assistance",account_access
-"My verification code expired can someone help",account_access
-"My verification code expired what should I do",account_access
-"My account has been disabled",account_access
-"My account has been disabled please",account_access
-"My account has been disabled and need assistance",account_access
-"My account has been disabled can someone help",account_access
-"My account has been disabled what should I do",account_access
-"I cannot access my user profile",account_access
-"I cannot access my user profile please",account_access
-"I cannot access my user profile and need assistance",account_access
-"I cannot access my user profile can someone help",account_access
-"I cannot access my user profile what should I do",account_access
-"I want to update my security questions",account_access
-"I want to update my security questions please",account_access
-"I want to update my security questions and need assistance",account_access
-"I want to update my security questions can someone help",account_access
-"I want to update my security questions what should I do",account_access
 "The VPN connection keeps dropping",technical_support
 "The VPN connection keeps dropping please",technical_support
 "The VPN connection keeps dropping and need assistance",technical_support
@@ -119,36 +89,6 @@ text,intent
 "The computer is running slowly and need assistance",technical_support
 "The computer is running slowly can someone help",technical_support
 "The computer is running slowly what should I do",technical_support
-"I cannot connect to the office network",technical_support
-"I cannot connect to the office network please",technical_support
-"I cannot connect to the office network and need assistance",technical_support
-"I cannot connect to the office network can someone help",technical_support
-"I cannot connect to the office network what should I do",technical_support
-"The keyboard stopped working",technical_support
-"The keyboard stopped working please",technical_support
-"The keyboard stopped working and need assistance",technical_support
-"The keyboard stopped working can someone help",technical_support
-"The keyboard stopped working what should I do",technical_support
-"The browser crashes repeatedly",technical_support
-"The browser crashes repeatedly please",technical_support
-"The browser crashes repeatedly and need assistance",technical_support
-"The browser crashes repeatedly can someone help",technical_support
-"The browser crashes repeatedly what should I do",technical_support
-"The video call has no sound",technical_support
-"The video call has no sound please",technical_support
-"The video call has no sound and need assistance",technical_support
-"The video call has no sound can someone help",technical_support
-"The video call has no sound what should I do",technical_support
-"The docking station is not recognized",technical_support
-"The docking station is not recognized please",technical_support
-"The docking station is not recognized and need assistance",technical_support
-"The docking station is not recognized can someone help",technical_support
-"The docking station is not recognized what should I do",technical_support
-"I need help troubleshooting a system error",technical_support
-"I need help troubleshooting a system error please",technical_support
-"I need help troubleshooting a system error and need assistance",technical_support
-"I need help troubleshooting a system error can someone help",technical_support
-"I need help troubleshooting a system error what should I do",technical_support
 "How many vacation days remain",leave_policy
 "How many vacation days remain please",leave_policy
 "How many vacation days remain and need assistance",leave_policy
@@ -194,36 +134,6 @@ text,intent
 "Which holidays are observed and need assistance",leave_policy
 "Which holidays are observed can someone help",leave_policy
 "Which holidays are observed what should I do",leave_policy
-"I need to extend my leave",leave_policy
-"I need to extend my leave please",leave_policy
-"I need to extend my leave and need assistance",leave_policy
-"I need to extend my leave can someone help",leave_policy
-"I need to extend my leave what should I do",leave_policy
-"How can I edit a vacation request",leave_policy
-"How can I edit a vacation request please",leave_policy
-"How can I edit a vacation request and need assistance",leave_policy
-"How can I edit a vacation request can someone help",leave_policy
-"How can I edit a vacation request what should I do",leave_policy
-"Where do I see my leave history",leave_policy
-"Where do I see my leave history please",leave_policy
-"Where do I see my leave history and need assistance",leave_policy
-"Where do I see my leave history can someone help",leave_policy
-"Where do I see my leave history what should I do",leave_policy
-"What are the rules for unpaid leave",leave_policy
-"What are the rules for unpaid leave please",leave_policy
-"What are the rules for unpaid leave and need assistance",leave_policy
-"What are the rules for unpaid leave can someone help",leave_policy
-"What are the rules for unpaid leave what should I do",leave_policy
-"Who approves my time off request",leave_policy
-"Who approves my time off request please",leave_policy
-"Who approves my time off request and need assistance",leave_policy
-"Who approves my time off request can someone help",leave_policy
-"Who approves my time off request what should I do",leave_policy
-"How do I report a sick day",leave_policy
-"How do I report a sick day please",leave_policy
-"How do I report a sick day and need assistance",leave_policy
-"How do I report a sick day can someone help",leave_policy
-"How do I report a sick day what should I do",leave_policy
 "Where can I download my pay statement",payroll
 "Where can I download my pay statement please",payroll
 "Where can I download my pay statement and need assistance",payroll
@@ -269,33 +179,3 @@ text,intent
 "I have a question about my bonus payment and need assistance",payroll
 "I have a question about my bonus payment can someone help",payroll
 "I have a question about my bonus payment what should I do",payroll
-"Where can I find previous payslips",payroll
-"Where can I find previous payslips please",payroll
-"Where can I find previous payslips and need assistance",payroll
-"Where can I find previous payslips can someone help",payroll
-"Where can I find previous payslips what should I do",payroll
-"My salary deposit has not arrived",payroll
-"My salary deposit has not arrived please",payroll
-"My salary deposit has not arrived and need assistance",payroll
-"My salary deposit has not arrived can someone help",payroll
-"My salary deposit has not arrived what should I do",payroll
-"How is my withholding calculated",payroll
-"How is my withholding calculated please",payroll
-"How is my withholding calculated and need assistance",payroll
-"How is my withholding calculated can someone help",payroll
-"How is my withholding calculated what should I do",payroll
-"I want to report a payroll discrepancy",payroll
-"I want to report a payroll discrepancy please",payroll
-"I want to report a payroll discrepancy and need assistance",payroll
-"I want to report a payroll discrepancy can someone help",payroll
-"I want to report a payroll discrepancy what should I do",payroll
-"How do I obtain an earnings statement",payroll
-"How do I obtain an earnings statement please",payroll
-"How do I obtain an earnings statement and need assistance",payroll
-"How do I obtain an earnings statement can someone help",payroll
-"How do I obtain an earnings statement what should I do",payroll
-"My reimbursement is missing from payroll",payroll
-"My reimbursement is missing from payroll please",payroll
-"My reimbursement is missing from payroll and need assistance",payroll
-"My reimbursement is missing from payroll can someone help",payroll
-"My reimbursement is missing from payroll what should I do",payroll
