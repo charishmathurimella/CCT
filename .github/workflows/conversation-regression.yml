@@ -1,0 +1,29 @@
+name: Conversational regression checks
+
+on:
+  push:
+    paths:
+      - "conversation-regression/**"
+      - ".github/workflows/conversation-regression.yml"
+  pull_request:
+    paths:
+      - "conversation-regression/**"
+      - ".github/workflows/conversation-regression.yml"
+  workflow_dispatch:
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install -r conversation-regression/requirements.txt
+      - name: Unit tests
+        working-directory: conversation-regression
+        run: python -m pytest -q
+      - name: Labeled regression suite
+        working-directory: conversation-regression
+        run: python run_regression.py
