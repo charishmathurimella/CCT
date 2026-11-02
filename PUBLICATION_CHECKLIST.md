@@ -1,6 +1,6 @@
 # Publication readiness checklist
 
-**Current state: PRIVATE. Do not change visibility without explicit owner approval.**
+**Current state: PUBLIC. Owner authorized publication. Post-publication safety review is ongoing.**
 
 ## Required before publishing
 
@@ -15,7 +15,7 @@
 - [ ] Manually verify the content is original and approved for sharing
 - [ ] Choose and add a license, if open-source reuse is desired
 - [ ] Review public-facing contact details and biography for accuracy
-- [ ] Obtain explicit owner approval before changing repository visibility
+- [x] Owner explicitly approved publication and changed repository visibility
 
 ## Run checks locally
 
@@ -46,7 +46,7 @@ python conversation-regression/run_regression.py
 
 ## Owner approval
 
-When all checks above are complete, request an explicit go-ahead to make the repository public. Publishing is a separate action, not implied by preparing it.
+The owner approved public visibility. The repository is now public. Outstanding safety checks must still be completed, and any discovered exposure must be addressed promptly.
 
 ## Verified CI results (2026-11-01, run 41370059339)
 
@@ -56,3 +56,13 @@ When all checks above are complete, request an explicit go-ahead to make the rep
 - Conversational regression: 13 tests passed; intent 35/35 and entity exact-match 35/35 on authored synthetic cases
 
 These are small, synthetic, curated benchmarks and are not production performance claims. The manual history, IP, contact-details, and licensing review remains open.
+
+## Post-publication audit notes (2026-11-01)
+
+- Current main branch inventory: 38 tracked files, including three SVG architecture illustrations and a showcase page.
+- Recent GitHub commit metadata exposes the owner's email address. Changing the README does not remove historical commit metadata.
+- README contact email and LinkedIn profile are publicly visible by design; owner should confirm this is acceptable.
+- Current file audit checks a limited set of credential patterns. It does not cover all secret types or historical commits.
+- Complete historical content inspection and independent ownership approval have **not** been established. Do not describe this audit as a comprehensive security clearance.
+- GitHub Actions workflow triggers only on selected project and script paths. README, showcase, and asset-only commits do not trigger the consolidated workflow.
+- No LICENSE file was present in the tracked file inventory; code reuse permissions remain unspecified.
