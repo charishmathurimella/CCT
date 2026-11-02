@@ -1,0 +1,41 @@
+text,intent
+"My employee login has been suspended",account_access
+"Can I recover a forgotten sign in password",account_access
+"The one time code is not being accepted",account_access
+"How do I unlock my user account",account_access
+"The login screen says my credentials expired",account_access
+"My authentication app is not approving sign in",account_access
+"I cannot access my profile after changing passwords",account_access
+"Please reset the security challenge on my account",account_access
+"My user ID is blocked",account_access
+"Why does the system reject my login",account_access
+"The wireless connection drops every few minutes",technical_support
+"My laptop freezes when I open the browser",technical_support
+"The printer refuses to print documents",technical_support
+"The meeting application has no audio",technical_support
+"The VPN app fails to establish a connection",technical_support
+"My external display is not detected",technical_support
+"The desktop computer will not power on",technical_support
+"I cannot install the latest software update",technical_support
+"The webcam is not working in meetings",technical_support
+"My keyboard stops responding randomly",technical_support
+"Can I take unpaid leave next month",leave_policy
+"How many sick days are available to me",leave_policy
+"Where can I see the vacation calendar",leave_policy
+"I need to cancel a time off request",leave_policy
+"Does unused annual leave carry forward",leave_policy
+"How do I request parental leave",leave_policy
+"Who approves my holiday request",leave_policy
+"When does my PTO allowance renew",leave_policy
+"Can I change the dates of my approved leave",leave_policy
+"What is the policy for medical absence",leave_policy
+"My salary has not reached my bank",payroll
+"Why was my paycheck deposited late",payroll
+"Can I download a detailed pay slip",payroll
+"My overtime earnings are missing",payroll
+"Where can I update my salary deposit account",payroll
+"The payroll deduction looks incorrect",payroll
+"When will this month's wages be paid",payroll
+"I need an annual income statement",payroll
+"Why is my bonus missing from my pay",payroll
+"How do I correct the bank details for direct deposit",payroll
