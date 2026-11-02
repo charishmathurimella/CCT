@@ -10,6 +10,8 @@ from run_regression import evaluate
 
 @pytest.mark.parametrize(("utterance", "intent"), [
     ("My password expired", "account_access"),
+    ("Unlock my account please", "account_access"),
+    ("Unlock the account", "account_access"),
     ("My laptop is broken", "technical_support"),
     ("Can I use PTO", "leave_policy"),
     ("My paycheck is late", "payroll"),
